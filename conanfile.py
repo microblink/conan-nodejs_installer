@@ -7,7 +7,7 @@ from conans.errors import ConanInvalidConfiguration
 
 class NodejsInstallerConan(ConanFile):
     name = "nodejs_installer"
-    version = "10.15.0"
+    version = "10.16.2"
     description = "nodejs binaries for use in recipes"
     topics = ("conan", "node", "nodejs")
     url = "https://github.com/bincrafters/conan-nodejs_installer"
@@ -21,7 +21,7 @@ class NodejsInstallerConan(ConanFile):
 
     def configure(self):
         if self.settings.arch_build == "x86" and self.settings.os_build == "Linux":
-            raise ConanInvalidConfiguration("Linux x86 is not support by nodejs 10.15.0")
+            raise ConanInvalidConfiguration("Linux x86 is not support by nodejs {}".format(self.version))
 
     def source(self):
         arch = "x64" if self.settings.arch_build == "x86_64" else "x86"
