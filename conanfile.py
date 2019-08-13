@@ -23,15 +23,15 @@ class NodejsInstallerConan(ConanFile):
         if self.settings.arch_build == "x86" and self.settings.os_build == "Linux":
             raise ConanInvalidConfiguration("Linux x86 is not support by nodejs {}".format(self.version))
 
-    def source(self):
+    def build(self):
         arch = "x64" if self.settings.arch_build == "x86_64" else "x86"
-        if tools.os_info.is_windows:
+        if self.settings.os_build == 'Windows':
             platform = "win"
             extension = "zip"
-        elif tools.os_info.is_macos:
+        elif self.settings.os_build == 'Macos':
             platform = "darwin"
             extension = "tar.gz"
-        elif tools.os_info.is_linux:
+        elif self.settings.os_build == 'Linux':
             platform = "linux"
             extension = "tar.xz"
         else:
