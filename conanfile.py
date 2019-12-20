@@ -51,7 +51,7 @@ class NodejsInstallerConan(ConanFile):
 
     def package(self):
         self.copy(pattern="LICENSE", dst="licenses", src=self._build_subfolder)
-        self.copy(pattern="*", src=self._build_subfolder, dst="", keep_path=True)
+        self.copy(pattern="*", src=self._build_subfolder, dst="", keep_path=True, symlinks=True)
 
     def package_info(self):
         bin_dir = self.package_folder if tools.os_info.is_windows else os.path.join(self.package_folder, "bin")
