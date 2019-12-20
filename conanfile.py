@@ -39,7 +39,13 @@ class NodejsInstallerConan(ConanFile):
 
         filename = "node-v{}-{}-{}".format(self.version, platform, arch)
         source_url = "{}/dist/v{}/{}.{}".format(self.homepage, self.version, filename, extension)
-        tools.get(source_url)
+        if self.settings.os_build == 'Linux':
+            tools.download(source_url, "{}.{}".format(filename, extension))
+            # run tar xf manually, as tools.unzip fails with this file
+            self.output.info("Decompressing {}.{}...".format(filename, extension))
+            self.run("tar xf {}.{}".format(filename, extension))
+        else:
+            tools.get(source_url)
         extracted_dir = filename
         os.rename(extracted_dir, self._build_subfolder)
 
