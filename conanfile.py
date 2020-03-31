@@ -10,9 +10,9 @@ class NodejsInstallerConan(ConanFile):
     version = "12.14.0"
     description = "nodejs binaries for use in recipes"
     topics = ("conan", "node", "nodejs")
-    url = "https://github.com/bincrafters/conan-nodejs_installer"
+    url = "https://github.com/microblink/conan-nodejs_installer"
     homepage = "https://nodejs.org"
-    author = "Bincrafters <bincrafters@gmail.com>"
+    author = "Bincrafters <bincrafters@gmail.com>, modified by Microblink"
     license = "MIT"
     exports = ["LICENSE.md"]
     exports_sources = "nodejs.patch"
